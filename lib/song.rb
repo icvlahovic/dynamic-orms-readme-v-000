@@ -33,7 +33,8 @@ class Song
   end
 
   def values_for_insert
-    self.class.column_names.map { |col_name| "'#{send(col_name)}'" unless send(col_name).nil? }.join(", ")
+    values = self.class.column_names.map { |col_name| "'#{send(col_name)}'" unless send(col_name).nil? }
+    values.join(", ")
   end
 
   def col_names_for_insert
