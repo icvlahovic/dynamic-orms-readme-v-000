@@ -13,8 +13,7 @@ class Song
 
     sql = "pragma table_info('#{table_name}')"
 
-    table_info = DB[:conn].execute(sql)
-    column_names = table_info.map { |row| column_names << row["name"] }.compact
+    table_info = DB[:conn].execute(sql).map { |row| row["name"] }.compact
   end
 
   self.column_names.each do |col_name|
